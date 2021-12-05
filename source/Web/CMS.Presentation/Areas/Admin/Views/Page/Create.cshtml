@@ -1,0 +1,35 @@
+﻿@model CreatePageDTO
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class=" col-sm-12">
+    <div class="card">
+        <div class=" card-header">
+            <h4 class=" card-title">Create Page</h4>
+        </div>
+        <div class=" card-body">
+            <form asp-action="Create">
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Title" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content"></label>
+                    <input asp-for="Content" class="form-control" placeholder="Content" />
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+                    <input type="submit" value="Create" class="btn btn-primary btn-sm float-right" />
+
+                </div>
+            </form>
+        </div>
+        <div class=" card-footer">
+            <a asp-action="List" class="btn btn-block btn-dark">Back To List</a>
+        </div>
+    </div>
+</div>
+

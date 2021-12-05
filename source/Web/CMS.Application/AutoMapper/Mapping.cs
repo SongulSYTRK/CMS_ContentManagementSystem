@@ -15,14 +15,20 @@ namespace CMS.Application.AutoMapper
             CreateMap<Page, CreatePageDTO>().ReverseMap();
             CreateMap<Page, UpdatePageDTO>().ReverseMap();
             CreateMap<Page, GetPageVM>().ReverseMap();
+            CreateMap<UpdatePageDTO, GetPageVM>().ReverseMap();
+
 
             CreateMap<Category, CreateCategoryDTO>().ReverseMap();
             CreateMap<Category, UpdateCategoryDTO>().ReverseMap();
             CreateMap<Category, GetCategoryVM>().ReverseMap();
+            CreateMap<UpdateCategoryDTO, GetCategoryVM>().ReverseMap();
+
+
 
             CreateMap<Product, CreateProductDTO>().ReverseMap();
             CreateMap<Product, UpdateProductDTO>().ReverseMap();
             CreateMap<Product, GetProductVM>().ReverseMap();
+            CreateMap<UpdateProductDTO, GetProductVM>().ReverseMap();
 
             CreateMap<AppUser, LoginDTO>().ReverseMap();
             CreateMap<AppUser, RegisterDTO>().ReverseMap();

@@ -10,7 +10,7 @@ namespace CMS.Application.Validation.FluentValidation
     {
         public CreateCategoryDTOValidation()
         {
-            RuleFor(x => x.Name).NotEmpty().MaximumLength(20).WithMessage("Enter a CategoryName");
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Enter a CategoryName").MaximumLength(20).MinimumLength(3).WithMessage("character min:3 max:20");
             RuleFor(x => x.Slug).NotEmpty().WithMessage("Enter a slug");
         }
     }

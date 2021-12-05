@@ -1,4 +1,6 @@
 ﻿using CMS.Application.Models.VMs;
+using CMS.Domain.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,5 +17,11 @@ namespace CMS.Application.Models.DTO
         public string CategoryName { get; set; }
         public int CategoryId { get; set; }
         public List<GetCategoryVM> Categories { get; set; }
+        public IFormFile Image { get; set; }
+      
+
+
+        public DateTime UpdateDate => DateTime.Now;
+        public Status Status => Status.Modified;
     }
 }

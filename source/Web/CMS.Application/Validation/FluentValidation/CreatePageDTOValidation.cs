@@ -10,9 +10,9 @@ namespace CMS.Application.Validation.FluentValidation
     {
         public CreatePageDTOValidation()
         {
-            RuleFor(x => x.Title).MaximumLength(20).NotEmpty().WithMessage("enter a Title");
-            RuleFor(x => x.Content).MaximumLength(20).NotEmpty().WithMessage("enter a Content");
-            RuleFor(x => x.Slug).NotEmpty().WithMessage("enter a Slug");
+            RuleFor(x => x.Title).NotEmpty().WithMessage("enter a Title").MaximumLength(20).MinimumLength(3).WithMessage("character min:3, max:20");
+            RuleFor(x => x.Content).NotEmpty().WithMessage("enter a Content").MaximumLength(50).MinimumLength(3).WithMessage("character min:3, max:50");
+            
         }
     }
 }

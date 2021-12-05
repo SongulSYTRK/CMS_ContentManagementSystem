@@ -25,13 +25,14 @@ namespace CMS.Application.Service.Concrete
 
 
 
+        
         public async Task Create(CreatePageDTO model)
         {
             var page = _mapper.Map<Page>(model);
-            await  _unitOfWork.PageRepository.Add(page);
+            await _unitOfWork.PageRepository.Add(page);
+
             await _unitOfWork.Commit();
         }
-
 
 
         public async Task Delete(int id)
@@ -86,7 +87,7 @@ namespace CMS.Application.Service.Concrete
                                                             Slug = x.Slug
                                                         },
                                                         expression: x => x.Status != Status.Passive,
-                                                        orderBy: x => x.OrderBy(x => x.Title));
+                                                        orderBy: x => x.OrderBy(x => x.Id));
             return pageList;
         }
     }
