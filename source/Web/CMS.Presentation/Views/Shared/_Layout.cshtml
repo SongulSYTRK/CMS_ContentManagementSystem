@@ -32,6 +32,9 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <div class="col-3">
+                @await Component.InvokeAsync("Categories")
+            </div>
             @RenderBody()
         </main>
     </div>

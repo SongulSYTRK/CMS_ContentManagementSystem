@@ -1,0 +1,27 @@
+﻿
+@model List<GetProductVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <img src="@item.ImagePath" class="card-img" />
+                </div>
+                <div class="card-body">
+                    <h5 class="card-text">@item.Name</h5>
+                    <h5 class="card-text">@item.Description</h5>
+                    <h5 class="card-text">@item.Price.ToString("C2")</h5>
+                    <h5 class="card-text">@item.CategoryName</h5>
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id" class="btn btn-primary btn-block">Add Cart</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
