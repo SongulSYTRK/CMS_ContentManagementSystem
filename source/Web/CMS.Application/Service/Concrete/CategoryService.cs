@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 
 namespace CMS.Application.Service.Concrete
 {
@@ -25,6 +26,7 @@ namespace CMS.Application.Service.Concrete
 
         public async Task Create(CreateCategoryDTO model)
         {
+            model.Slug = model.Name.ToLower().Replace(" ", "_");
             var category =  _mapper.Map<Category>(model);
            
             await _unitOfWork.CategoryRepository.Add(category);
@@ -74,6 +76,8 @@ namespace CMS.Application.Service.Concrete
        
         public async Task Update(UpdateCategoryDTO model)
         {
+            // model.Slug = model.Name.ToLower().Replace(" ", "_");
+           model.Slug =Crypto.GenerateSalt().ToLower() + model.Name;  //kriptoladım .Url adresimden nasıl çalıştığımı dışarı gizlemek için
             var category = _mapper.Map<Category>(model);
             _unitOfWork.CategoryRepository.Update(category);
             await _unitOfWork.Commit();

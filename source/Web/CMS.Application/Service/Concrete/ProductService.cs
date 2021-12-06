@@ -5,6 +5,8 @@ using CMS.Application.Service.Interface;
 using CMS.Domain.Entities.Concrete;
 using CMS.Domain.Enums;
 using CMS.Domain.UnitofWork;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,14 @@ namespace CMS.Application.Service.Concrete
         public async Task Create(CreateProductDTO model)
         {
             var product = _mapper.Map<Product>(model);
+
+            if (model.Image != null)
+            {
+                using var image = Image.Load(model.Image.OpenReadStream());
+                image.Mutate(x => x.Resize(256, 256));
+                image.Save("wwwroot/images/products/" + product.Name + ".jpg");
+                product.ImagePath = ("/images/products/" + product.Name + ".jpg");
+            }
             await _unitOfWork.ProductRepository.Add(product);
             await _unitOfWork.Commit();
         }
@@ -35,7 +45,7 @@ namespace CMS.Application.Service.Concrete
         {
             var product =await _unitOfWork.ProductRepository.GetByDefault(x=>x.Id==id);
 
-            //  _unitOfWork.ProductRepository.Delete(product);
+            
             product.DeleteDate = DateTime.Now;
             product.Status = Status.Passive;
             await _unitOfWork.Commit();

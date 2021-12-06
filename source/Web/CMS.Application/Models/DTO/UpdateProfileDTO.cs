@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CMS.Application.Extension;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,7 +20,7 @@ namespace CMS.Application.Models.DTO
 
 
         [NotMapped]
-        //[FileExtension]
+        [FileExtension]
         public IFormFile Image { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CMS.Application.Models.DTO;
 using CMS.Application.Models.VMs;
+using CMS.Domain.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,9 @@ namespace CMS.Application.Service.Interface
         Task<UpdatePageDTO> GetById(int id);
         Task<List<GetPageVM>> GetPage();
 
-        
+
+        Task<Page> GetBySlug(string slug);
+
+
     }
 }

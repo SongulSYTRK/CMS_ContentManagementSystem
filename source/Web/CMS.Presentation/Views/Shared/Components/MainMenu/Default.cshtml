@@ -1,0 +1,13 @@
+﻿@model List<GetPageVM>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@foreach (var item in Model)
+{
+    <li class="nav-item">
+
+        <a class="nav-link text-dark" asp-controller="Page" asp-action="Index" asp-route-slug="@item.Slug">@item.Title</a>
+    </li>
+}

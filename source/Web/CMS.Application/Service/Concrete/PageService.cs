@@ -90,5 +90,14 @@ namespace CMS.Application.Service.Concrete
                                                         orderBy: x => x.OrderBy(x => x.Id));
             return pageList;
         }
+
+
+        public async Task<Page> GetBySlug(string slug)
+        {
+            var page = await _unitOfWork.PageRepository.GetByDefault(x => x.Slug == slug);
+            return page;
+        }
+
+        
     }
 }

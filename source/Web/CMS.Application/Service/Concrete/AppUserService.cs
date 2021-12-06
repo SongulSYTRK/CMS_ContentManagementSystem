@@ -62,8 +62,28 @@ namespace CMS.Application.Service.Concrete
                 {
                     using var image = Image.Load(model.Image.OpenReadStream());
                     image.Mutate(x => x.Resize(256, 256));
-                    image.Save("wwwroot/images/users" + user.UserName + ".jpg");
-                    user.Imagepath = ("/images/users" + user.UserName + ".jpg");
+                    image.Save("wwwroot/images/users/" + user.UserName + ".jpg");
+                    user.Imagepath = ("/images/users/" + user.UserName + ".jpg");
+
+                    //if (true)
+                    //{
+                    //    image.Mutate(x => x.Resize(560,560));
+                    //    image.Save("wwwroot/images/users/" + user.UserName + ".jpg");
+                    //    user.LargeImage = ("/images/users/" + user.UserName + ".jpg");
+                    //}
+                    //if(true)
+                    //{
+                    //    image.Mutate(x => x.Resize(256, 256));
+                    //    image.Save("wwwroot/images/users/" + user.UserName + ".jpg");
+                    //    user.MediumImage = ("/images/users/" + user.UserName + ".jpg");
+                    //}
+                    //if (true)
+                    //{
+                    //    image.Mutate(x => x.Resize(60, 60));
+                    //    image.Save("wwwroot/images/users/" + user.UserName + ".jpg");
+                    //    user.SmallImgae = ("/images/users/" + user.UserName + ".jpg");
+                    //}
+
 
                     if (model.FullName != null)
                     {

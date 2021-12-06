@@ -9,7 +9,7 @@ namespace CMS.Application.Models.DTO
     {
         public string Name { get; set; }
 
-        public string Slug => Name.ToLower().Replace(" ", "_");
+        public string Slug { get; set; }
 
 
         public DateTime CreateDate => DateTime.Now;
