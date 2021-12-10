@@ -37,7 +37,9 @@ namespace CMS.Application.Service.Concrete
                 image.Save("wwwroot/images/products/" + product.Name + ".jpg");
                 product.ImagePath = ("/images/products/" + product.Name + ".jpg");
             }
+
             await _unitOfWork.ProductRepository.Add(product);
+
             await _unitOfWork.Commit();
         }
 
@@ -113,6 +115,25 @@ namespace CMS.Application.Service.Concrete
             _unitOfWork.ProductRepository.Update(product);
 
             await _unitOfWork.Commit();
+        }
+
+        public async Task<List<GetProductVM>> GetProductsByCategory(int categoryId)
+        {
+            var productsByCategoryList = await _unitOfWork.ProductRepository.GetFilteredFirstOrDefaults(
+                selector: x => new GetProductVM
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Price = x.Price,
+                    ImagePath = x.ImagePath,
+                    CategoryName = x.Category.Name,
+                    Description = x.Description
+
+                },
+                expression: x => x.CategoryId == categoryId && x.Status != Status.Passive,
+                orderBy: x => x.OrderBy(z => z.Name));
+
+            return productsByCategoryList;
         }
     }
 }

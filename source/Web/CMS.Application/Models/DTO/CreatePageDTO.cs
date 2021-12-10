@@ -12,7 +12,7 @@ namespace CMS.Application.Models.DTO
         public string Title { get; set; }
         public string Content { get; set; }
        // public string Slug => Title.ToLower().Replace(" ", "_");
-        public string Slug => Crypto.GenerateSalt().ToLower()+Title;  //kriptoladm
+        public string Slug => Crypto.GenerateSalt().ToLower()+Title;  //Crypto=> I do not want the client to see the url address
 
 
         public DateTime CreateDate => DateTime.Now;

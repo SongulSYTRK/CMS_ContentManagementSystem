@@ -3,16 +3,17 @@
     ViewData["Title"] = "Create";
 }
 
-<div class=" col-sm-12">
+<div class="col-sm-6">
     <div class="card">
-        <div class=" card-header">
-            <h4 class=" card-title">Create Product</h4>
+        <div class="card-header">
+            <h4 class="card-title">Create Product</h4>
         </div>
-        <div class=" card-body">
+        <div class="card-body">
             <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Name"></label>
-                    <input asp-for="Name" class="form-control" placeholder="Product name" />
+                    <input asp-for="Name" class="form-control" placeholder="Name" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -26,7 +27,7 @@
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ImagePath"> choose  a ımage</label>
+                    <label asp-for="Image"> choose  a ımage</label>
                     <input type="file" asp-for="Image" class="form-control" />
                     <span asp-validation-for="ImagePath" class="text-danger"></span>
                 </div>
@@ -39,18 +40,14 @@
                         }
                     </select>
                 </div>
-
                 <div class="form-group">
-
                     <input type="submit" value="Create" class="btn btn-primary btn-sm float-right" />
-
                 </div>
             </form>
         </div>
-        <div class=" card-footer">
+        <div class="card-footer">
             <a asp-action="List" class="btn btn-block btn-dark">Back To List</a>
         </div>
     </div>
 </div>
-
 

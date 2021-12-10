@@ -1,4 +1,5 @@
 ﻿using CMS.Application.Service.Interface;
+using CMS.Domain.Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,21 @@ namespace CMS.Presentation.Controllers
         {
             var product = await _productService.GetProduct();
             return View(product);
+        }
+
+        public async Task<IActionResult> ProductsByCategory(string categorySlug)
+        {
+           
+            Category category = await _categoryService.GetBySlug(categorySlug);
+
+            if (category == null)
+                return RedirectToAction("Index");
+
+
+          
+            var productList = await _productService.GetProductsByCategory(category.Id);
+
+            return View(productList);
         }
     }
 }

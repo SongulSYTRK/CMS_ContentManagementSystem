@@ -12,7 +12,7 @@ namespace CMS.Application.Validation.FluentValidation
         {
             RuleFor(x => x.Name).NotEmpty().MaximumLength(20).WithMessage("Enter a Productname");
             RuleFor(x => x.Description).NotEmpty().WithMessage("Enter a Description").MaximumLength(200).MinimumLength(5).WithMessage("character min : 5 max : 200");
-            RuleFor(x => x.ImagePath).NotEmpty().MaximumLength(200).WithMessage("Enter a Imagepath");
+          //  RuleFor(x => x.ImagePath).NotEmpty().MaximumLength(200).WithMessage("Enter a Imagepath");
             RuleFor(x => x.Price).NotEmpty().WithMessage("Enter a Price");
         }
     }

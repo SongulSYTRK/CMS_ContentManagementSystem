@@ -20,7 +20,7 @@ namespace CMS.Application.Validation.FluentValidation
             RuleFor(x => x.Password).NotEmpty().WithMessage("Enter a password");
 
             RuleFor(x => x.ConfirmPassword).NotEmpty().WithMessage("Enter a confirmpassword").Equal(x => x.Password).WithMessage("password dont match");
-            RuleFor(x => x.ImagePath).NotEmpty().WithMessage("Choose a picture").Length(150);
+            RuleFor(x => x.ImagePath).NotEmpty().WithMessage("Choose a picture");
         }
     }
 }

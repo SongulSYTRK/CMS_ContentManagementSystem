@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CMS.Domain.Entities.Concrete
 {
-    public class AppUserRole : IdentityRole<int>, IBaseEntity
+    public class AppUserRole : IdentityRole, IBaseEntity
     {
         public DateTime CreateDate  { get; set; }
         public DateTime? DeleteDate  { get; set; }

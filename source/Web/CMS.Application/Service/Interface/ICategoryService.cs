@@ -1,5 +1,6 @@
 ﻿using CMS.Application.Models.DTO;
 using CMS.Application.Models.VMs;
+using CMS.Domain.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,5 +16,6 @@ namespace CMS.Application.Service.Interface
 
         Task<UpdateCategoryDTO> GetById(int id);
         Task<List<GetCategoryVM>> GetCategory();
+        Task<Category> GetBySlug(string slug);
     }
 }

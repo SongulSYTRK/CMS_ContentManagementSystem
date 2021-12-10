@@ -18,12 +18,36 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>*@
+                        @if (User?.Identity?.IsAuthenticated ?? false)   @*//bu kısma girebilmesi için startup kısmına "app.UseAuthentication" eklenmesi gerekiyor*@
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-sm btn-success" asp-area="" asp-controller="Account" asp-action="ProfileDetail" asp-route-userName="@User.Identity.Name">View Profile</a>
+                            </li>
+                            <li class="nav-item ml-1">
+                                <a class="btn btn-sm btn-warning" asp-area="" asp-controller="Account" asp-action="Edit" asp-route-userName="@User.Identity.Name">My Account</a>
+                            </li>
+                            <li class="nav-item ml-1">
+                                <a class="btn btn-sm btn-danger" asp-area="" asp-controller="Account" asp-action="LogOut">@User.Identity.Name, Log Out</a>
+                            </li>
+
+                            @if (User.IsInRole("admin") || User.IsInRole("employee"))
+                            {
+                                <li class="nav-item ml-1">
+                                    <a class="btn btn-sm btn-primary" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Area</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-sm btn-primary" asp-area="" asp-controller="Account" asp-action="LogIn">Log In</a>
+                            </li>
+                            <li class="nav-item ml-1">
+                                <a class="btn btn-sm btn-success" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
                         @await Component.InvokeAsync("MainMenu")
                     </ul>
                 </div>

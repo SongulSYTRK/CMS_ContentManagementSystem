@@ -10,8 +10,8 @@ namespace CMS.Application.Validation.FluentValidation
     {
         public LoginDTOValidation()
         {
-            RuleFor(x => x.UserName).Empty().MaximumLength(20).WithMessage("Enter a username");
-            RuleFor(x => x.Password).Empty().MaximumLength(20).WithMessage("Enter a password");
+            RuleFor(x => x.UserName).NotEmpty().MaximumLength(20).WithMessage("Enter a username");
+            RuleFor(x => x.Password).NotEmpty().MaximumLength(20).WithMessage("Enter a password");
         }
     }
 }

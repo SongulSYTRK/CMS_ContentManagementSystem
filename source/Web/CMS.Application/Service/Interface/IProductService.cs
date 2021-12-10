@@ -16,5 +16,6 @@ namespace CMS.Application.Service.Interface
 
         Task<UpdateProductDTO> GetById(int id);
         Task<List<GetProductVM>> GetProduct();
+        Task<List<GetProductVM>> GetProductsByCategory(int categoryId);
     }
 }

@@ -1,0 +1,60 @@
+﻿@model GetAppUserVM
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <<div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Profile Datail</h5>
+            </div>
+            <div class="card-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>UserName</th>
+                            <th>Email</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr>
+                            <td><img src="@Model.ImagePath" width="80" /></td>
+                            <td><h4>@Model.FullName</h4></td>
+                            <td><h4>@Model.UserName</h4></td>
+                            <td><h4>@Model.Email</h4></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="card-footer">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-block btn-dark">HomePage</a>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+</body>
+</html>

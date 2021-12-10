@@ -1,4 +1,5 @@
 ﻿using CMS.Application.Models.DTO;
+using CMS.Application.Models.VMs;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,10 @@ namespace CMS.Application.Service.Interface
     {
         Task<IdentityResult> Register(RegisterDTO model);
         Task<SignInResult> Login(LoginDTO model);
-
         Task LogOut();
         Task UpdateUser(UpdateProfileDTO model);
-
-        Task<UpdateProfileDTO> GetById(int id);
-        Task<int> UserIdFormName(string userName);
+        Task<UpdateProfileDTO> GetById(string id);
+        Task<GetAppUserVM> GetByUser(string id);
+        Task<int> UserIdFromName(string userName);
     }
 }

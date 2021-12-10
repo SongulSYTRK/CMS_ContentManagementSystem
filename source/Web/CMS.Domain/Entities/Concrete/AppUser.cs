@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CMS.Domain.Entities.Concrete
 {
-    public class AppUser : IdentityUser<int>, IBaseEntity
+    public class AppUser : IdentityUser, IBaseEntity
     {       
         //Normally We define Id into BaseEntity. But IdentityUser.cs have Id so we didnt Id property. We defined int to "Id " (<int>)
 

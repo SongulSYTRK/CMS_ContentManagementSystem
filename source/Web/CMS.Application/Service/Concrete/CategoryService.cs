@@ -26,7 +26,7 @@ namespace CMS.Application.Service.Concrete
 
         public async Task Create(CreateCategoryDTO model)
         {
-            model.Slug = model.Name.ToLower().Replace(" ", "_");
+           // model.Slug = model.Name.ToLower().Replace(" ", "_");
             var category =  _mapper.Map<Category>(model);
            
             await _unitOfWork.CategoryRepository.Add(category);
@@ -81,6 +81,11 @@ namespace CMS.Application.Service.Concrete
             var category = _mapper.Map<Category>(model);
             _unitOfWork.CategoryRepository.Update(category);
             await _unitOfWork.Commit();
+        }
+        public async Task<Category> GetBySlug(string slug)
+        {
+            var category = await _unitOfWork.CategoryRepository.GetByDefault(x => x.Slug == slug);
+            return category;
         }
     }
 }

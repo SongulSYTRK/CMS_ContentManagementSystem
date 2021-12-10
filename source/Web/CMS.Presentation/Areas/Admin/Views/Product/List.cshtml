@@ -3,7 +3,7 @@
     ViewData["Title"] = "List";
 }
 
-<<div class="col-sm-12">
+<div class="col-sm-12">
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">Product List</h5>
@@ -31,7 +31,7 @@
                             <td>@item.Description</td>
                             <td>@item.Price.ToString("C2")</td>
                             <td>
-                                <img src="@item.ImagePath" width="60" />
+                                <img src="@item.ImagePath" width="100" />
                             </td>
                             <td>@item.CategoryName</td>
                             <td>
@@ -46,8 +46,10 @@
             </table>
         </div>
         <div class="card-footer">
-            <a asp-action="Create" class="btn btn-block btn-dark">Create new product</a>
+            <a asp-action="Create" class="btn btn-block btn-dark">Create a Product</a>
         </div>
     </div>
 </div>
+
+
 

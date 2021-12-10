@@ -34,6 +34,7 @@ namespace CMS.Application.AutoMapper
             CreateMap<AppUser, RegisterDTO>().ReverseMap();
             CreateMap<AppUser, UpdateProfileDTO>().ReverseMap();
             CreateMap<AppUser, GetAppUserVM>().ReverseMap();
+            CreateMap<UpdateProfileDTO, GetAppUserVM>().ReverseMap();
         }
     }
 }

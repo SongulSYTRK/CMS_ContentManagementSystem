@@ -26,23 +26,24 @@ namespace CMS.Presentation.Areas.Admin.Controllers
             return View(await _productService.GetProduct());
         }
 
-        public async Task<IActionResult> Create()
-        {
-            CreateProductDTO model = new CreateProductDTO();
-            model.Categories =await _categoryService.GetCategory();
-            return View(model);
-        }
+        public async Task<IActionResult> Create() => View(new CreateProductDTO() { Categories = await _categoryService.GetCategory() });
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateProductDTO model)
         {
+
             if (ModelState.IsValid)
             {
                 await _productService.Create(model);
-                TempData["Success"] = "Product has been added";
+                TempData["Success"] = "The product has been added..!";
                 return RedirectToAction("List");
             }
-            TempData["Error"] = "Product hasnt been added";
-            return View(model);
+            else
+            {
+                TempData["Error"] = "The product hasn't been added..!";
+                model.Categories = await _categoryService.GetCategory();
+                return View(model);
+            }
         }
 
         #region Update

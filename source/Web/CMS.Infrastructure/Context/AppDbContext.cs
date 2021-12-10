@@ -13,7 +13,7 @@ using System.Text;
 
 namespace CMS.Infrastructure.Context
 {
-    public class AppDbContext : IdentityDbContext<AppUser, AppUserRole, int>
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -33,6 +33,7 @@ namespace CMS.Infrastructure.Context
             builder.ApplyConfiguration(new AppUserMap());
 
             builder.ApplyConfiguration(new PageSeeding());
+            builder.ApplyConfiguration(new LoginSeeding());
             base.OnModelCreating(builder);
         }
 

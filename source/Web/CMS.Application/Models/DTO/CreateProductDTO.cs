@@ -11,19 +11,24 @@ namespace CMS.Application.Models.DTO
 {
    public  class CreateProductDTO
     {
-        
+
         public string Name { get; set; }
+
         public string Description { get; set; }
+
         public decimal Price { get; set; }
-        public string ImagePath { get => "/images/products/default.jpg"; }
-       
-        [NotMapped]
-        [FileExtension]   //yazmış olduğum attribute 
-        public IFormFile Image { get; set; }
-        public int CategoryId { get; set; }
-        public List<GetCategoryVM> Categories { get; set; }
+
+        public string ImagePath { get; set; }
 
         public DateTime CreateDate => DateTime.Now;
         public Status Status => Status.Active;
+
+        [NotMapped]
+        [FileExtension] 
+        public IFormFile Image { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public List<GetCategoryVM> Categories { get; set; }
     }
 }
