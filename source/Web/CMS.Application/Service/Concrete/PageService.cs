@@ -98,6 +98,13 @@ namespace CMS.Application.Service.Concrete
             return page;
         }
 
-        
+        public async Task<bool> isPageExist(string slug)  //birden fazla girme aynı şeyi
+        {
+            var isPageExist = await _unitOfWork.PageRepository.Any(x => x.Slug == slug);
+            return isPageExist;
+        }
+
+
+
     }
 }

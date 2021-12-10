@@ -14,7 +14,7 @@ namespace CMS.Application.Service.Interface
         Task Delete(int id);
         Task Update(UpdatePageDTO model);
 
-
+        Task<bool> isPageExist(string slug);
         Task<UpdatePageDTO> GetById(int id);
         Task<List<GetPageVM>> GetPage();
 

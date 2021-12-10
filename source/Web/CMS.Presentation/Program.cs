@@ -22,11 +22,16 @@ namespace CMS.Presentation
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
             .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+
+
+            // I write 3rd part ioc container(autofac). I must move program.cs or startup.cs. I choose promram.cs
             .ConfigureContainer<ContainerBuilder>(builder =>
             {
                 builder.RegisterModule(new DependencyResolver());
 
             })
+
+
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

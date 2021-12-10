@@ -28,13 +28,15 @@ namespace CMS.Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().AddFluentValidation();
+            services.AddControllersWithViews().AddFluentValidation();   // I wrote for Fluentvalidation. 
+
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-
+            //I resolved Identity
             services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedPhoneNumber = false;
@@ -65,7 +67,7 @@ namespace CMS.Presentation
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseAuthentication(); //eðer bunu eklemezsen otantike olamaz
+            app.UseAuthentication(); //I added for autherization .If you dont write this, Login doesnt succeess 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

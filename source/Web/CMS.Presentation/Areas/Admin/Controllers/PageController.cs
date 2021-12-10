@@ -27,6 +27,11 @@ namespace CMS.Presentation.Areas.Admin.Controllers
        {
             if(ModelState.IsValid)
             {
+                if (await _pageService.isPageExist(model.Slug) != false)
+                {
+                    TempData["Warning"] = "the page have ";  //   _notificationPartial
+                    return View("List");
+                }
                 await _pageService.Create(model);  
                 TempData["Success"] = "the page has been added";
                 return RedirectToAction("List");

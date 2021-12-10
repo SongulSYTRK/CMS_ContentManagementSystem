@@ -2,6 +2,7 @@
 using CMS.Application.Models.DTO;
 using CMS.Application.Models.VMs;
 using CMS.Domain.Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +36,11 @@ namespace CMS.Application.AutoMapper
             CreateMap<AppUser, UpdateProfileDTO>().ReverseMap();
             CreateMap<AppUser, GetAppUserVM>().ReverseMap();
             CreateMap<UpdateProfileDTO, GetAppUserVM>().ReverseMap();
+
+
+            CreateMap<IdentityRole, CreateRoleDTO>().ReverseMap();
+            CreateMap<IdentityRole, UpdateRoleDTO>().ReverseMap();
+            CreateMap<UpdateRoleDTO, IdentityRole>().ReverseMap();
         }
     }
 }

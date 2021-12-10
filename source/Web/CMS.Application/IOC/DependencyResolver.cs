@@ -30,7 +30,7 @@ namespace CMS.Application.IOC
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerLifetimeScope();
             builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerLifetimeScope();
             builder.RegisterType<AppUserService>().As<IAppUserService>().InstancePerLifetimeScope();
-
+            builder.RegisterType<RoleService>().As<IRoleService>().InstancePerLifetimeScope();
             #endregion
 
 
