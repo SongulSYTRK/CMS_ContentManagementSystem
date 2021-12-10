@@ -4,3 +4,20 @@
 
 
 ![image](https://user-images.githubusercontent.com/90280719/144720241-0f85a622-014f-47dd-b87e-4f05d182e0a4.png)
+
+
+## What is Authorization ?
+
+## What is ClaimPrinciple?
+
+
+## What is RoleManangement?
+
+
+## What is Session ?
+
+
+## What is FluenValidation?
+
+
+## What is Autofac?
