@@ -1,0 +1,70 @@
+﻿@model CartVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@if (Model.CartItems.Count > 0)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Cart Overview</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>ProductName</th>
+                                <th>Quantity</th>
+                                <th></th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.Image" width="60" />
+                                    </td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>
+                                        <a asp-action="Add" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">+</a>
+                                        <a asp-action="Remove" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">Remove</a>
+                                        <a asp-action="Decrease" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">-</a>
+                                    </td>
+                                    <td>@item.Price</td>
+                                    <td>
+                                        @Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Quantity * x.Price).ToString("C2")
+                                    </td>
+
+
+                                </tr>
+                            }
+                            <tr>
+                                <td class="text-right" colspan="6">
+                                    <span class="badge badge-info">Grand Total: @Model.GrandTotal.ToString("C2")</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Clear" class="btn btn-block btn-danger">Clear The Cart</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+else
+{
+    <h3 class="display-4 text-center">Your cart is empty</h3>
+}

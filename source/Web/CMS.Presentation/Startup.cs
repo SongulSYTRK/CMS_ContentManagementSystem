@@ -50,6 +50,10 @@ namespace CMS.Presentation
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 
+            services.AddSession(options =>
+            {
+            });
+
 
         }
 
@@ -67,6 +71,8 @@ namespace CMS.Presentation
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession(); //for sesion  ekledik 
             app.UseAuthentication(); //I added for autherization .If you dont write this, Login doesnt succeess 
             app.UseAuthorization();
 

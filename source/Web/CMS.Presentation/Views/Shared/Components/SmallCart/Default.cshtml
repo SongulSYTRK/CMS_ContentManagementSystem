@@ -1,0 +1,16 @@
+﻿@model SmallCartVM
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@if (Model != null)
+{
+    <p>Items in cart: <span class="badge badge-primary">@Model.NumberOfItems</span></p>
+    <p>Total: <b>@Model.TotalAmount.ToString("C2")</b></p>
+    <a class="btn btn-sm btn-primary mb-2" asp-controller="Cart" asp-action="Index">View Cart</a>
+    <br />
+    <a class="btn btn-sm btn-danger" asp-controller="Cart" asp-action="Clear">Clear Cart</a>
+}
+else
+{
+    <p class="lead m-1">Your cart is empty</p>
+}
