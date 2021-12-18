@@ -23,10 +23,7 @@ namespace CMS.Application.Service.Interface
         Task<bool> isPageExist(string roleName);
 
 
-        Task<AssignedRoleToUserDTO> GetAssignedRoleToUsers(string id);
-
-
-        Task PostAssignedRoleToUsers(AssignedRoleToUserDTO model);
+        
 
     }
 }

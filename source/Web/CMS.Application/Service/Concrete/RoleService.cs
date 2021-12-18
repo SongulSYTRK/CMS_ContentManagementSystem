@@ -84,51 +84,10 @@ namespace CMS.Application.Service.Concrete
 
 
         
-        public async Task<AssignedRoleToUserDTO> GetAssignedRoleToUsers(string id)
-        {
-            IdentityRole role = await _roleManager.FindByIdAsync(id);
-
-            List<AppUser> hasRole = new List<AppUser>();
-            List<AppUser> hasNoRole = new List<AppUser>();
-
-            //_userManager.Users vasıtasıyla bütün user'ların listesini bana getirir
-            foreach (AppUser user in _userManager.Users)
-            {
-                var list = await _userManager.IsInRoleAsync(user, role.Name) ? hasRole : hasNoRole;
-                list.Add(user);
-            }
-
-           return  new AssignedRoleToUserDTO
-            {
-                Role = role,
-                HasRole = hasRole,
-                HasNoRole = hasNoRole
-            };
-           
-
-            
-        }
+     
 
 
-        public async Task PostAssignedRoleToUsers(AssignedRoleToUserDTO model)
-        {
-            IdentityResult result;
-
-            //şayet AddIds[] arayy'i boş gelirse exception yememek için yanında new string[] { } bir array daha yarattık
-            foreach (string userId in model.AddIds ?? new string[] { })
-            {
-                AppUser user = await _userManager.FindByIdAsync(userId); //rol atanacak user'i ıd'sinden yakaladım
-                result = await _userManager.AddToRoleAsync(user, model.RoleName); // yukarıda yakaladığımız user'a modelden bize gelen role ismini atadık
-            }
-
-            foreach (string userId in model.DeleteIds ?? new string[] { })
-            {
-                AppUser user = await _userManager.FindByIdAsync(userId); //rolü silinecek user'i ıd'sinden yakaladım
-                result = await _userManager.RemoveFromRoleAsync(user, model.RoleName); // yukarıda yakaladığımız user'a modelden bize gelen role ismini sildik
-            }
-
-           await _unitOfWork.Commit();
-        }
+       
 
     }
 }

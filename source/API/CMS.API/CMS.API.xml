@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CMS.API</name>
+    </assembly>
+    <members>
+        <member name="M:CMS.API.Controllers.CategoryController.GetCategories">
+            <summary>
+            Get all Categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.CategoryController.GetCategoryById(System.Int32)">
+            <summary>
+            GetCategoryById
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.CategoryController.GetCategoryBySlug(System.String)">
+            <summary>
+            GetCategoryBySlug
+            </summary>
+            <param name="slug"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.CategoryController.DeleteCategory(System.Int32)">
+            <summary>
+            DeleteCategory
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.CategoryController.CreateCategory(CMS.Application.Models.DTO.CreateCategoryDTO)">
+            <summary>
+            CreateCategory
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.CategoryController.UpdateCategory(CMS.Application.Models.DTO.UpdateCategoryDTO)">
+            <summary>
+            UpdateCategory
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PageController.GetPage">
+            <summary>
+            All Page
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PageController.GetById(System.Int32)">
+            <summary>
+            Get By ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PageController.GetPageBySlug(System.String)">
+            <summary>
+            GetPageBySlug
+            </summary>
+            <param name="slug"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PageController.CreatePage(CMS.Application.Models.DTO.CreatePageDTO)">
+            <summary>
+            Create Page
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.PageController.UpdatePage(CMS.Application.Models.DTO.UpdatePageDTO)">
+            <summary>
+            UpdatePAge
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ProductController.GetProducts">
+            <summary>
+            Get all Products
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ProductController.GetProductsByID(System.Int32)">
+            <summary>
+            Get By ıd 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ProductController.DeleteCategory(System.Int32)">
+            <summary>
+            Delete Product
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ProductController.CreateCategory(CMS.Application.Models.DTO.CreateProductDTO,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Create Product
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CMS.API.Controllers.ProductController.UpdateCategory(CMS.Application.Models.DTO.UpdateProductDTO)">
+            <summary>
+            Update Products
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

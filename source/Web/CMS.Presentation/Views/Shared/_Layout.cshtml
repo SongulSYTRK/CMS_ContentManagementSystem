@@ -18,10 +18,10 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (User?.Identity?.IsAuthenticated ?? false)   @*//bu kısma girebilmesi için startup kısmına "app.UseAuthentication" eklenmesi gerekiyor*@
+                        @if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <a class="btn btn-sm btn-success" asp-area="" asp-controller="Account" asp-action="ProfileDetail" asp-route-userName="@User.Identity.Name">View Profile</a>
+                                <a class="btn btn-sm btn-warning" asp-area="" asp-controller="Account" asp-action="ProfileDetail" asp-route-userName="@User.Identity.Name">View Profile</a>
                             </li>
                             <li class="nav-item ml-1">
                                 <a class="btn btn-sm btn-warning" asp-area="" asp-controller="Account" asp-action="Edit" asp-route-userName="@User.Identity.Name">My Account</a>
@@ -56,10 +56,17 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            <div class="col-3">
-                @await Component.InvokeAsync("Categories")
+            <div class="row">
+                <div class="col-3">
+                    @await Component.InvokeAsync("Categories")
+                    <div class="smallcart bg-success mt-3 p-3 text-white">
+                        @await Component.InvokeAsync("SmallCart")
+                    </div>
+                </div>
+                <div class="col">
+                    @RenderBody()
+                </div>
             </div>
-            @RenderBody()
         </main>
     </div>
 
@@ -74,3 +81,6 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+
