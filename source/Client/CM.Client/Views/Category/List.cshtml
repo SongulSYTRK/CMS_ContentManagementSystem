@@ -1,0 +1,50 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Category List</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+
+                        <th>Slug</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+
+                            <td>@item.Slug</td>
+                            <td>
+                                <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Update</a>
+                            </td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Create" class="btn btn-block btn-dark">Create new category</a>
+        </div>
+    </div>
+</div>
+
+

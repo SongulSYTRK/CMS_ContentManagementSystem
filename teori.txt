@@ -1,0 +1,39 @@
+**API'den data çýkarken json olarak çýkýyor client girereken de category olarak girmesi gerekiyor.**
+
+
+
+ 1.CMS.API CMS.Client_Shop adýnda Asp.net Core web Application (model-view-controller) olarak açýlýr.
+ 2.Models altýnda category class açýlýr.Dto da oluþturabilrdik.Ama fazla iþ yapmamak adýns category üzerinden yürüttük iþlerimizi.
+ 2.Controller altýnda category controller oluþturulur.
+
+
+ 
+ NOT => Client_Shop'un controller sayfasýnda herhangi bir injection yapýlmamaktadýr.Ayrýca Client Shop için herhangi migration iþlemide
+ yapýlmamaktadýr.Datalarýn bize gelmesinin web kýsmýnda bulunan katmanlarla hiçbir alakasý yoktur.Bunlarý bize API katmanýnda oluþturmuþ olduðumuz swagger teslim etmektedir.Client_Shop'u CMS projesinde deðilde ayrý bir projede oluþtarabilirdik.Sonuçta swagger bize datalarý teslim edecektir.CMS API 'de swagger sayfasýnda bulunan "GET" kýsmýna basýp "Try it out"  => "Execute" => "Request URL" altýndaki yolu;
+ 
+ Request URL
+http://localhost:2694/api/Category
+ 
+ Category Controller de yaptýðýmýz create,update,delete iþlemlerinde duruma göre belirteceðiz.
+
+
+ Hangi kýsýmda çalýþýyorsan onu set a startup yapmayý unutma.Client_shop'ta controller sayfsýnda oluþturmuþ olduðum methodlarý görmek için viewlarýný
+oluþturduk.Bunu görmek içinde view sayfalarýna "View In Browser" deyip daha sonra CMS.API kýsmý set a startup olduðundan emin olup IIS ayaða kaldýrdýk.Bu iþlemsýrasý önemlidir.ilk önce hangi sayfayý görmek istiyorsak o sayfaya view in browser dedikten sonra	"IIS" ayaða kaldýrmamýz gerekmektedir.Ve daha sonra view ýn browser dediðimz sayfaya gidip refreshledikten sonra bize datalar gelecektir.
+
+DTO oluþturmakla uðraþmadýk bize "Category" adýnda oluþturduðumuz sýnýf bunlarý temin edecektir. CRUD iþlemlerinde de "Category" sýnýfýndan çaðýracaðýz.
+
+Using : IDisposable interface'sinden türemiþ nesneler using(){} bloðu içinde oluþturulursa,using bloðundan çýkýlýr çýkýlmaz GC(Garbage Collector)’ye devredilir ve hemen silinirler(Dispose edilirler).Çünkü IDisposable’den türemiþ classlarda %100 Dispose metodu vardýr.Using bloðuda aslýnda blok sonunda bu metodu çalýþtýrmaktadýr.Bu sayede manuel olarak nesneyi Dispose etmemize gerek kalmaz.
+
+CategoryController , Controllerden kalýtým almaktadýr.Controller'ýn üstüne gelip "Go to Definition" yaptýðýmýz zaman Controller snýfýnýn IDisposable kalýtým aldýðýný görmekteyiz.Yani using kullanýldýðýnda iþi biter bitmez oradan kaldýrýlacak demektir.
+
+
+HttpClient : C# ile bir API’a istekte bulunabilmek için System.Net.Http namespace’i altýnda bulunan HttpClient sýnýfý kullanýlmaktadýr. Bu sýnýf ile API’lara yapýlacak olan sýradan istekler çok kolay gerçekleþtirilebilir.Get,Post,Update,Delete gibi..
+
+http://localhost:2694/api/Category/{id} => URL oluyor sonunda bulunan id de uri oluyor.
+
+Uri => Bir URL’nin altýnda bulunan kaynaðýn tam yoluna iþaret eden kýsýmdýr.
+
+Encoding.UTF8 => Türkçe karakter desteði 
+
+
+ReadAsStringAsync() => HTTP içeriðini seri hale getirin ve içeriði  bir iþlem olarak temsil eden bir akýþ döndürün.
