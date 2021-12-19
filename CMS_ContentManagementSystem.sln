@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS.Presentation", "source\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMS.API", "source\API\CMS.API\CMS.API.csproj", "{B4D3DE44-41EB-4EA5-A2BD-C69322AC886F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.Client", "source\Client\CM.Client\CM.Client.csproj", "{CB0901B1-8C0B-4DB3-9BAE-6F9E4185665F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.Client", "source\Client\CM.Client\CMS.Client.csproj", "{CB0901B1-8C0B-4DB3-9BAE-6F9E4185665F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
