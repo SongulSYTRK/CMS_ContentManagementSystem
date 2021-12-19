@@ -3,6 +3,7 @@
 using CMS.Application.Service.Interface;
 using CMS.Domain.Entities.Concrete;
 using CMS.Presentation.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,8 +13,9 @@ using System.Threading.Tasks;
 
 namespace CMS.Presentation.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin, Employee")]
     [Area("Admin")]
-   
+
     public class RoleController : Controller
     {
 
@@ -32,6 +34,8 @@ namespace CMS.Presentation.Areas.Admin.Controllers
             return View(_roleService.GetRolesList()); 
         }
         public IActionResult Create() => View();
+
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateRoleDTO model)
         {

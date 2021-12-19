@@ -34,8 +34,14 @@ namespace CMS.Presentation.Controllers
         public async Task<IActionResult> Add(int id)
         {
             Product product = await _db.Products.FindAsync(id);
+
+
+        
             List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+            
             CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
+   
             if (cartItem == null)
             {
                 cart.Add(new CartItem(product));
@@ -44,9 +50,12 @@ namespace CMS.Presentation.Controllers
             {
                 cartItem.Quantity += 1;
             }
+
+           
             HttpContext.Session.SetJson("Cart", cart);
-           // return RedirectToAction("index");
-             return ViewComponent("SmallCart");
+
+
+            return ViewComponent("SmallCart");
         }
         public IActionResult Decrease(int id)
         {

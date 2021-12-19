@@ -11,15 +11,15 @@ namespace CMS.Application.Extension
         //sepete gönderirken json tipine gönüştürüyorum
         public static void SetJson(this ISession session, string key, object value)
         {
-            session.SetJson(key, JsonConvert.SerializeObject(value));
+            session.SetString(key, JsonConvert.SerializeObject(value));
         }
-        
+
 
         //sepetten alırken json tipinden T tipine dönüştürüoyrum 
         public static T GetJson<T>(this ISession session, string key)
         {
             var sessionData = session.GetString(key);
-            return sessionData == null ? default(T) : JsonConvert.DeserializeObject<T>(sessionData);
+            return sessionData == null ? default(T) : JsonConvert.DeserializeObject<T>(sessionData); 
         }
 
     }

@@ -30,10 +30,10 @@
                                 <a class="btn btn-sm btn-danger" asp-area="" asp-controller="Account" asp-action="LogOut">@User.Identity.Name, Log Out</a>
                             </li>
 
-                            @if (User.IsInRole("admin") || User.IsInRole("employee"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
                             {
                                 <li class="nav-item ml-1">
-                                    <a class="btn btn-sm btn-primary" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Area</a>
+                                    <a class="btn btn-sm btn-primary" asp-area="Admin" asp-controller="Role" asp-action="List">Admin Area</a>
                                 </li>
                             }
                         }

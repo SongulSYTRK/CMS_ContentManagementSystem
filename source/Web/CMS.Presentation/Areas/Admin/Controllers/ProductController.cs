@@ -1,5 +1,6 @@
 ﻿using CMS.Application.Models.DTO;
 using CMS.Application.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Presentation.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin, Employee")]
     [Area("Admin")]
     public class ProductController : Controller
     {
